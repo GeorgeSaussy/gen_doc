@@ -31,12 +31,12 @@ You can customize the begining of the generated documentation by replacing `titl
 
 # Installation
 
-See `INSTALL.md`
+See `doc/INSTALL.md`
 
 # Contributing
 
-See `CONTRIBUTING.md`
+See `doc/CONTRIBUTING.md`
 
 # Licence
 
-This is licensed under Apache 2. See `LICENCE.txt`.
+This is licensed under Apache 2. See `doc/LICENCE.txt`.
