@@ -39,7 +39,7 @@ echo "\\documentclass[a4paper,10pt]{article}\\usepackage[utf8]{inputenc}\\usepac
 ## Initialize loop variables
 FILE_EXTENTIONS=(c cpp h txt md py rb sh go)
 EXEMPT_DIRECTORIES=(scripts $WORK_DIR)
-EXEMPT_FILES=(sub_gen_doc.sh)
+EXEMPT_FILES=()
 
 ## Loop over files
 for FE in ${FILE_EXTENTIONS[@]}; do 
@@ -48,7 +48,7 @@ for FE in ${FILE_EXTENTIONS[@]}; do
       echo "\\newpage" >> $WORK_FILE;
       echo "\\[$FILE\\]" >> $WORK_FILE;
       echo "\\begin{verbatim}" >> $WORK_FILE;
-      cat $FILE >> $WORK_FILE;
+      cat $FILE | sed -e 's,\\,\\\\,g' | sed -E 's,\$,\\\$,g' | sed -E 's,_,\\textunderscore,g' >> $WORK_FILE;
       echo "\\end{verbatim}" >> $WORK_FILE;
     fi;
   done;
@@ -63,7 +63,7 @@ for FE in ${FILE_EXTENTIONS[@]}; do
       echo "\\newpage" >> $WORK_FILE;
       echo "\\[$FILE\\]" >> $WORK_FILE;
       echo "\\begin{verbatim}" >> $WORK_FILE;
-      cat $FILE >> $WORK_FILE;
+      cat $FILE | sed -e 's,\\,\\\\,g' | sed -E 's,\$,\\\$,g' | sed -E 's,_,\\textunderscore,g' >> $WORK_FILE;
       echo "\\end{verbatim}" >> $WORK_FILE;
     fi;
   done;
@@ -78,7 +78,7 @@ for FE in ${FILE_EXTENTIONS[@]}; do
       echo "\\newpage" >> $WORK_FILE;
       echo "\\[$FILE\\]" >> $WORK_FILE;
       echo "\\begin{verbatim}" >> $WORK_FILE;
-      cat $FILE >> $WORK_FILE;
+      cat $FILE | sed -e 's,\\,\\\\,g' | sed -E 's,\$,\\\$,g' | sed -E 's,_,\\textunderscore,g' >> $WORK_FILE;
       echo "\\end{verbatim}" >> $WORK_FILE;
     fi;
   done;

@@ -37,9 +37,9 @@ for FE in ${FILE_EXTENTIONS[@]}; do
   for FILE in *.$FE; do
     if [ "$FILE" != "*.$FE" ] && [ $(contains ${EXEMPT_FILES[@]} $FILE) != "y" ]; then
       echo "\\newpage" >> $WORK_FILE;
-      echo "\\[$FILE\\]" | sed -e 's,_,\\textunderscore,g' >> $WORK_FILE;
+      echo "$FILE\n" | sed -e 's,_,\\textunderscore,g' >> $WORK_FILE;
       echo "\\begin{verbatim}" >> $WORK_FILE;
-      cat $FILE | sed -e 's,\\,\\textbackslash,g' | sed -E 's,\$,\\\$,g' | sed -E 's,_,\\textunderscore,g' >> $WORK_FILE;
+      cat $FILE | sed -e 's,\\end{verbatim},\\//end{verbatim},g' >> $WORK_FILE;
       echo "\\end{verbatim}" >> $WORK_FILE;
     fi;
   done;
@@ -52,9 +52,9 @@ for FE in ${FILE_EXTENTIONS[@]}; do
     done; 
     if [ "$FILE" != "**/*.$FE" ] && [ $(contains ${EXEMPT_FILES[@]} $FILE) != "y" ] && $CONTINUE; then
       echo "\\newpage" >> $WORK_FILE;
-      echo "\\[$FILE\\]" | sed -e 's,_,\\textunderscore,g' >> $WORK_FILE;
+      echo "$FILE\n" | sed -e 's,_,\\textunderscore,g' >> $WORK_FILE;
       echo "\\begin{verbatim}" >> $WORK_FILE;
-      cat $FILE | sed -e 's,\\,\\textbackslash,g' | sed -E 's,\$,\\\$,g' | sed -E 's,_,\\textunderscore,g' >> $WORK_FILE;
+      cat $FILE | sed -e 's,\\end{verbatim},\\//end{verbatim},g' >> $WORK_FILE;
       echo "\\end{verbatim}" >> $WORK_FILE;
     fi;
   done;
@@ -67,9 +67,9 @@ for FE in ${FILE_EXTENTIONS[@]}; do
     done;
     if [ "$FILE" != "**/**/*.$FE" ] && [ $(contains ${EXEMPT_FILES[@]} $FILE) != "y" ] && $CONTINUE; then
       echo "\\newpage" >> $WORK_FILE;
-      echo "\\[$FILE\\]" | sed -e 's,_,\\textunderscore,g' >> $WORK_FILE;
+      echo "$FILE\n" | sed -e 's,_,\\textunderscore,g' >> $WORK_FILE;
       echo "\\begin{verbatim}" >> $WORK_FILE;
-      cat $FILE | sed -e 's,\\,\\textbackslash,g' | sed -E 's,\$,\\\$,g' | sed -E 's,_,\\textunderscore,g' >> $WORK_FILE;
+      cat $FILE | sed -e 's,\\end{verbatim},\\//end{verbatim},g' >> $WORK_FILE;
       echo "\\end{verbatim}" >> $WORK_FILE;
     fi;
   done;

@@ -39,7 +39,7 @@ for FE in ${FILE_EXTENTIONS[@]}; do
       echo "\\newpage" >> $WORK_FILE;
       echo "\\[$FILE\\]" >> $WORK_FILE;
       echo "\\begin{verbatim}" >> $WORK_FILE;
-      cat $FILE >> $WORK_FILE;
+      cat $FILE | sed -e 's,\\,\\\\,g' | sed -E 's,\$,\\\$,g' | sed -E 's,_,\\textunderscore,g' >> $WORK_FILE;
       echo "\\end{verbatim}" >> $WORK_FILE;
     fi;
   done;
@@ -54,7 +54,7 @@ for FE in ${FILE_EXTENTIONS[@]}; do
       echo "\\newpage" >> $WORK_FILE;
       echo "\\[$FILE\\]" >> $WORK_FILE;
       echo "\\begin{verbatim}" >> $WORK_FILE;
-      cat $FILE >> $WORK_FILE;
+      cat $FILE | sed -e 's,\\,\\\\,g' | sed -E 's,\$,\\\$,g' | sed -E 's,_,\\textunderscore,g' >> $WORK_FILE;
       echo "\\end{verbatim}" >> $WORK_FILE;
     fi;
   done;
@@ -69,7 +69,7 @@ for FE in ${FILE_EXTENTIONS[@]}; do
       echo "\\newpage" >> $WORK_FILE;
       echo "\\[$FILE\\]" >> $WORK_FILE;
       echo "\\begin{verbatim}" >> $WORK_FILE;
-      cat $FILE >> $WORK_FILE;
+      cat $FILE | sed -e 's,\\,\\\\,g' | sed -E 's,\$,\\\$,g' | sed -E 's,_,\\textunderscore,g' >> $WORK_FILE;
       echo "\\end{verbatim}" >> $WORK_FILE;
     fi;
   done;
